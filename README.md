@@ -58,20 +58,20 @@ Built with a clean MVC structure, it supports user authentication, note tagging,
 
     Create & activate a virtual environment
 
-python3 -m venv venv
-source venv/bin/activate
+    python3 -m venv venv
+    source venv/bin/activate
 
 Install dependencies
 
-pip install -r requirements.txt
+    pip install -r requirements.txt
 
 Apply migrations
 
-python manage.py migrate
+    python manage.py migrate
 
 Create a superuser (optional)
 
-python manage.py createsuperuser
+    python manage.py createsuperuser
 
 Run the development server
 
@@ -81,14 +81,14 @@ Run the development server
 
 ## Project Structure
 
-notes/
-├── core/           # Project settings & URL routing
-├── note/           # Notes app (models, views, templates)
-├── users/          # Custom user app (auth, profile, email/password change)
-├── static/         # Static files (CSS, JS)
-├── templates/      # Global templates
-├── manage.py
-└── requirements.txt
+    notes/
+    ├── core/           # Project settings & URL routing
+    ├── note/           # Notes app (models, views, templates)
+    ├── users/          # Custom user app (auth, profile, email/password change)
+    ├── static/         # Static files (CSS, JS)
+    ├── templates/      # Global templates
+    ├── manage.py
+    └── requirements.txt
 
 ## Usage
 
