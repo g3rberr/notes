@@ -13,8 +13,6 @@ Built with a clean MVC structure, it supports user authentication, note tagging,
 4. [Project Structure](#project-structure)  
 5. [Usage](#usage)  
 6. [Future Improvements](#future-improvements)  
-7. [Contributing](#contributing)  
-8. [License](#license)  
 
 ---
 
@@ -81,7 +79,7 @@ Run the development server
 
     Open http://127.0.0.1:8000/ in your browser.
 
-Project Structure
+## Project Structure
 
 notes/
 ├── core/           # Project settings & URL routing
@@ -92,7 +90,7 @@ notes/
 ├── manage.py
 └── requirements.txt
 
-Usage
+## Usage
 
     Register a new account or login with existing credentials.
 
@@ -102,7 +100,7 @@ Usage
 
     Filter by tag by clicking on a tag label.
 
-Future Improvements
+## Future Improvements
 
     Integrate a caching layer (Redis) for faster note listing.
 
