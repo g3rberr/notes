@@ -1,0 +1,39 @@
+{% load humanize %}
+
+<table class="table" style="width: 100%; border: 1px solid #33FF00; background-color: #000;">
+    <thead class="text-center" style="background-color: #000000; color: #33FF00;">
+        <tr>
+            <th>Note Title</th>
+            <th>Note Saved on</th>
+            <th>Tags</th>
+            <th class="text-center">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for note in notes %}
+        <tr style="background-color: #000; color: #33FF00;">
+            <td><a href="{% url 'notes:view_note' %}?note={{ note.id }}" style="color: #33FF00;">{{ note.title }}</a></td>
+            <td>{{ note.added_on | naturaltime }}</td>
+            <td>
+                {% for tag in note.tags.all %}
+                    {{ tag }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </td>
+            <td class="text-center">
+                <form action="{% url 'notes:delete_tag' %}" method="POST" style="display: inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="tag" value="{{ tag.id }}">
+                    <button type="submit" style="background: none; border: none; padding: 0;">
+                        <span class="glyphicon glyphicon-trash" style="color: #33FF00;"></span>
+                    </button>
+                </form>
+            </td>
+            
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No notes found</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

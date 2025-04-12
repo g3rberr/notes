@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block content %}
+    <div class="container" style="padding-top: 2%">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div style="padding: 3%; background-color: #000000; color: #33FF00; border: 1px solid #33FF00;">
+                <legend><h3 class="text-center" style="color: #33FF00;"><b>User Details:</b></h3></legend>
+                <h4><b>Registered on:</b> <br><br> {{ user.created | naturaltime}}</h4>
+                <br>
+                <h4><b>Last Logged in on:</b> <br><br> {{ user.last_login | naturaltime }}</h4>
+                <br>
+                <h4><b>Email: <a href="{% url 'users:change_email' %}" style="color: #33FF00;"><span class="glyphicon glyphicon-pencil"></span></a></b> <br><br>{{ user.email }}</h4>
+                <br>
+                <h4><b>Username:</b> <br><br> {{ user.username }}</h4>
+            </div>
+        </div> <!-- ./column -->
+
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <div style="padding: 3%; background-color: #000000; color: #33FF00; border: 1px solid #33FF00;">
+                <a href="{% url 'users:profile' %}" style="color: #33FF00; text-decoration: none;">
+                    <h3>Notes <span class="badge" style="background-color: #33FF00;">{{ notes_count }}</span></h3>
+                </a>
+                <input type="text" id="notes" class="form-control no_borders"
+                       autocomplete="off" name="notes"
+                       placeholder="Search Note"
+                       style="background-color: #000000; color: #33FF00; border: 1px solid #33FF00;">
+
+                <!-- таблица для отображения результатов -->
+                <table id="suggestions" style="width: 100%; border-collapse: collapse; display: none;">
+                    <thead>
+                        <tr style="background-color: #1a1a1a; color: #33FF00;">
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+                <div style="padding-top: 20px">
+                    <div id="result"></div>
+                </div>
+                <br>
+                <a href="{% url 'notes:tags' %}" style="color: #33FF00; text-decoration: none;">
+                    <h3>Tags <span class="badge" style="background-color: #33FF00;">{{ tag_count }}</span></h3>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const input = document.getElementById("notes");
+    const suggestions = document.getElementById("suggestions");
+    const tbody = suggestions.querySelector("tbody");
+
+    input.addEventListener("input", function () {
+        const query = input.value;
+
+        if (query.length < 1) {
+            suggestions.style.display = "none";  // скрыть таблицу, если ничего не введено
+            return;
+        }
+
+        fetch(`/users/profile/settings/search-notes/?q=${encodeURIComponent(query)}`)
+            .then(response => response.json())
+            .then(data => {
+                tbody.innerHTML = "";  // очищаем таблицу перед добавлением новых данных
+
+                if (data.results.length === 0) {
+                    suggestions.style.display = "none";  // если нет результатов, скрываем таблицу
+                    return;
+                }
+
+                suggestions.style.display = "table";  // показываем таблицу с результатами
+
+                data.results.forEach(note => {
+                    const row = document.createElement("tr");
+                    row.style.borderBottom = "1px solid #33FF00";  // зелёная линия
+
+                    const cell = document.createElement("td");
+                    cell.textContent = note.title;
+                    cell.style.padding = "10px";
+                    cell.style.cursor = "pointer";
+                    cell.style.color = "#33FF00";
+
+                    // Делаем клик на строке, чтобы перейти к note
+                    cell.onclick = () => {
+                        window.location.href = `/notes/view_note/?note=${note.id}`;
+                    };
+
+                    row.appendChild(cell);
+                    tbody.appendChild(row);
+                });
+            });
+    });
+});
+</script>
+
+        
+{% endblock %}
+

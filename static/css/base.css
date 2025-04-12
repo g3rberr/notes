@@ -1,0 +1,412 @@
+/* ==================================== base.html styles ======================================== */
+.add-margin-top {
+    margin-top: 5%;
+}
+
+@media only screen and (max-device-width: 480px) {
+    /* Define mobile specific styles */
+    .add-margin-top {
+        margin-top: 20%;
+    }
+
+    .add-margin-bottom {
+        margin-top: 5%;
+    }
+}
+
+.add-margin-bottom {
+    margin-bottom: 5%;
+}
+
+/* Set background to black and green highlights */
+body {
+    background-color: #000000; /* Черный фон для всей страницы */
+    color: #33FF00; /* Зелёный цвет текста, как у хакеров */
+    font-family: 'Courier New', monospace; /* Моноширинный шрифт для ощущения хакерского стиля */
+}
+
+/* ===================================== Navbar styles ======================================== */
+.navbar-default {
+    font-size: 17px;
+    margin: 0;
+    padding: 7px;
+    background-color: #000000; /* Черный фон для навигационной панели */
+    border: none;
+}
+
+nav .navbar-brand {
+    font-size: 20px;
+    color: #33FF00; /* Зеленый цвет для названия */
+}
+
+/* Change hover color on links */
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-brand:hover {
+    color: #00FF00; /* Более яркий зеленый на hover */
+}
+
+/* Active link styles */
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .active > a:hover {
+    color: #00FF00; /* Ярко-зеленый для активных ссылок */
+}
+
+/* ===================================== Jumbotron Styles ======================================== */
+.jumbotron {
+    margin-bottom: 0px;
+    height: 350px;
+    color: #33FF00; /* Зеленый текст для jumbotron */
+    background-color: #000000; /* Черный фон для jumbotron */
+    border-radius: 0px !important;
+}
+
+.jumbotron .element {
+    color: #33FF00; /* Зеленый цвет для текста в jumbotron */
+}
+
+/* ===================================== Profile styles ======================================== */
+.list-group-item {
+    border-radius: 0px !important;
+}
+
+.thumbnail {
+    border-radius: 0px;
+    box-shadow: 2px 2px 2px #333333; /* Тень темного цвета */
+    border-style: none;
+    border: 0;
+    color: #33FF00; /* Зеленый цвет текста */
+}
+
+.thumbnail:hover {
+    box-shadow: 2px 2px 2px #00FF00; /* Яркая зелёная тень при наведении */
+    border-style: none;
+    border: 0;
+    text-decoration: none;
+}
+
+.no_borders {
+    border-radius: 0px;
+}
+
+.flask-pagedown-preview {
+    margin-top: 2%;
+    padding: 2%;
+    background-color: #000000; /* Черный фон для блока предпросмотра */
+    box-shadow: 2px 2px 2px #333333;
+}
+
+.flask-pagedown-preview::before {
+    content: "Preview:";
+    font-weight: bold;
+    font-size: 18;
+}
+
+.inline-headers h3,
+.inline-headers h5 {
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+.inline-p p {
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+/* ========================== Dropdown styles ========================== */
+.navbar-default .navbar-nav .dropdown-menu {
+    background-color: #000000; /* Черный фон */
+    border: none; /* Убираем бордер */
+    color: #33FF00; /* Зеленый текст */
+}
+
+.navbar-default .navbar-nav .dropdown-menu > li > a {
+    color: #33FF00; /* Зеленые ссылки */
+}
+
+/* Переопределяем стили для активного состояния ссылки в выпадающем меню */
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .open > a:hover {
+  color: #33FF00; /* Ярко-зеленый текст */
+  background-color: #000000; /* Темный фон */
+}
+
+/* Стили для hover на элементах в выпадающем меню */
+.navbar-default .navbar-nav .dropdown-menu > li > a:hover,
+.navbar-default .navbar-nav .dropdown-menu > li > a:focus {
+  color: #33FF00; /* Ярко-зеленый текст */
+  background-color: #333333; /* Темный фон на hover */
+}
+
+legend {
+    border-bottom: 1px solid #33FF00;
+}
+
+.dark-input {
+    background-color: #000000 !important;
+    color: #33FF00 !important;
+    border: 1px solid #33FF00 !important;
+}
+
+.dark-input:focus {
+    background-color: #000000 !important;
+    color: #33FF00 !important;
+    border-color: #33FF00 !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+table, th, td {
+    border: 1px solid #33FF00 !important;
+}
+
+.table-bordered {
+    border: 1px solid #33FF00 !important;
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #33FF00 !important;
+}
+
+input, textarea, select {
+    background-color: #000000 !important;
+    color: #33FF00 !important; /* Зеленый цвет для текста */
+    border: 1px solid #33FF00 !important;
+    outline: none !important; /* Убираем стандартное обводка при фокусе */
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #33FF00 !important; /* Зеленая рамка при фокусе */
+    background-color: #000000 !important;
+    color: #33FF00 !important; /* Зеленый текст при фокусе */
+}
+
+/* Убираем серые рамки, если они появляются при нажатии на поле */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Если фокус все равно появляется с серыми рамками — удаляем их для всех форм */
+input:focus, textarea:focus, select:focus {
+    box-shadow: none !important;
+    border-color: #33FF00 !important; /* Зеленая рамка */
+}
+
+/* Скрываем стандартный стиль кнопки */
+button:focus {
+    outline: none !important;
+}
+.dark-input {
+    background-color: #000000 !important;
+    color: #33FF00 !important;
+    border: 1px solid #33FF00 !important;
+}
+
+.dark-input:focus {
+    background-color: #000000 !important;
+    color: #33FF00 !important;
+    outline: none;
+    box-shadow: none;
+}
+input, textarea, select {
+    background-color: #000000 !important;
+    color: #33FF00 !important; /* Зеленый цвет для текста */
+    border: 1px solid #33FF00 !important;
+    outline: none !important; /* Убираем стандартное обводка при фокусе */
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #33FF00 !important; /* Зеленая рамка при фокусе */
+    background-color: #000000 !important;
+    color: #33FF00 !important; /* Зеленый текст при фокусе */
+}
+
+/* Убираем серые рамки, если они появляются при нажатии на поле */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Если фокус все равно появляется с серыми рамками — удаляем их для всех форм */
+input:focus, textarea:focus, select:focus {
+    box-shadow: none !important;
+    border-color: #33FF00 !important; /* Зеленая рамка */
+}
+
+/* Скрываем стандартный стиль кнопки */
+button:focus {
+    outline: none !important;
+}
+input, textarea, select {
+    background-color: #000000 !important;
+    color: #33FF00 !important; /* Зеленый цвет для текста */
+    border: 1px solid #33FF00 !important;
+    outline: none !important; /* Убираем стандартное обводка при фокусе */
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #33FF00 !important; /* Зеленая рамка при фокусе */
+    background-color: #000000 !important;
+    color: #33FF00 !important; /* Зеленый текст при фокусе */
+}
+
+/* Убираем серые рамки, если они появляются при нажатии на поле */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Если фокус все равно появляется с серыми рамками — удаляем их для всех форм */
+input:focus, textarea:focus, select:focus {
+    box-shadow: none !important;
+    border-color: #33FF00 !important; /* Зеленая рамка */
+}
+
+/* Скрываем стандартный стиль кнопки */
+button:focus {
+    outline: none !important;
+}
+.tag-link {
+    color: #33FF00;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.tag-link:hover {
+    color: #33FF00 !important;
+    text-decoration: underline;
+}
+
+table, th, td {
+    border: 1px solid #33FF00 !important;
+    background-color: #000 !important;
+    color: #33FF00 !important;
+}
+
+tbody tr:hover {
+    background-color: #000000 !important;
+}
+
+thead {
+    background-color: #111 !important;
+}
+.tag-link {
+    color: #33FF00;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+
+table, th, td {
+    border: 1px solid #33FF00 !important;
+    background-color: #000 !important;
+    color: #33FF00 !important;
+}
+
+tbody tr:hover {
+    background-color: #000000 !important;
+}
+
+.tag-link:hover {
+    color: #33FF00 !important;
+    text-decoration: underline;
+}
+
+
+thead {
+    background-color: #111 !important;
+}
+
+a.close:hover {
+    color: red !important;
+}
+
+.dark-input {
+    background-color: #000000 !important;
+    color: #33FF00 !important;
+    border: 1px solid #33FF00 !important;
+}
+
+.dark-input:focus {
+    background-color: #000000 !important;
+    color: #33FF00 !important;
+    outline: none;
+    box-shadow: none;
+}
+table, th, td {
+    border: 1px solid #33FF00 !important;
+}
+
+.table-bordered {
+    border: 1px solid #33FF00 !important;
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #33FF00 !important;
+}
+
+input, textarea, select {
+    background-color: #000000 !important;
+    color: #33FF00 !important; /* Зеленый цвет для текста */
+    border: 1px solid #33FF00 !important;
+    outline: none !important; /* Убираем стандартное обводка при фокусе */
+}
+/* Убираем серые рамки, если они появляются при нажатии на поле */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Если фокус все равно появляется с серыми рамками — удаляем их для всех форм */
+input:focus, textarea:focus, select:focus {
+    box-shadow: none !important;
+    border-color: #33FF00 !important; /* Зеленая рамка */
+}
+
+/* Скрываем стандартный стиль кнопки */
+button:focus {
+    outline: none !important;
+}
+
+option {
+    background: black;
+    color: #33FF00;
+}
+  
+option:checked {
+  background-color: #33FF00;
+  color: #000000;
+}
+
+#suggestions {
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: #1a1a1a;
+    border: 1px solid #33FF00;
+    border-radius: 5px;
+}
+
+#suggestions tbody tr:hover {
+    background-color: #333333;  /* Цвет при наведении на строку */
+}

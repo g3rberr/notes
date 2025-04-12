@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+
+            <form method="post" action="{% url 'notes:add_tag' %}">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-md-offset-3 col-lg-offset-3 text-center">
+                    {% csrf_token %}
+                    
+                    <h3>New tag</h3>
+                    <br>
+                    {{ form.name }}
+                    <br>
+                    <button type="submit" class="form-control btn btn-primary" style="background-color: #000; border: 1px solid #33FF00; color: #33FF00;">
+                        Save tag
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <style>
+       
+    </style>
+{% endblock %}

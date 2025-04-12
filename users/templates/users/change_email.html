@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container" style="padding-top: 2%">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <form method="post" action="{% url 'users:change_email' %}">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-md-offset-3 col-lg-offset-3 text-center">
+                    {% csrf_token %}
+
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger" style="background-color: #000000; color: #33FF00; border: 1px solid #33FF00;">
+                            <ul>
+                                {% for error in form.non_field_errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+
+                    <br>
+                    <h3 style="color: #33FF00;">New email</h3>
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <div class="alert alert-danger" style="background-color: #000000; color: #33FF00; border: 1px solid #33FF00;">
+                            <ul class="list-unstyled">
+                                {% for error in form.email.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    <br>
+
+                    <h3 style="color: #33FF00;">Current password</h3>
+                    <br>
+                    {{ form.current_password }}
+                    {% if form.current_password.errors %}
+                        <div class="alert alert-danger" style="background-color: #000000; color: #33FF00; border: 1px solid #33FF00;">
+                            <ul class="list-unstyled">
+                                {% for error in form.current_password.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    <br>
+
+                    <button type="submit" class="form-control btn btn-primary" style="background-color: #000000; border: 1px solid #33FF00; color: #33FF00; transition: background-color 0.3s ease;">
+                        Change Email
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        
+    </style>
+{% endblock %}

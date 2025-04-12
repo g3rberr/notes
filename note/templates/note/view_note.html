@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block content %}
+                    
+    <div class="container" style="padding-top: 2%; color: #33FF00;">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="thumbnail" style="padding: 3%; background-color: #000; border: 1px solid #33FF00;">
+
+                    <legend><h3 class="text-center" style="color: #33FF00;"><b>Note Details:</b></h3></legend>
+                    <h4><b>Note Added on:</b><br><br> {{ note.added_on | naturaltime }}</h4>
+                    <br>
+                    <h4><b>Note Updated on:</b><br><br> {{ note.updated_on | naturaltime }}</h4>
+                    <br>
+                    <h4><b>Note Title:</b><br><br> {{ note.title }}</h4>
+            </div>
+        </div>
+
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <div class="thumbnail" style="padding: 3%; background-color: #000; border: 1px solid #33FF00;">
+
+                <div class="d-flex justify-content-between" style="margin-bottom: 20px; height: 40px;">
+                        <a href="{% url 'notes:edit_note' %}?note={{ note.id }}" class="pull-left">
+                            <button type="button" class="btn btn-outline-info" style="color: #33FF00; border-color: #33FF00; background-color: #000;">
+                                <span class="glyphicon glyphicon-edit"></span> Edit
+                            </button>
+                        </a>
+
+                        <form action="{% url 'notes:delete_note' %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <input type="hidden" name="tag" value="{{ note.id }}">
+                            <button type="submit" style="background: none; border: none; padding: 0;">
+                                <span class="glyphicon glyphicon-trash" style="color: #33FF00;"></span>
+                            </button>
+                        </form>
+                    </td>
+                    </div>
+
+                    <h2 style="color: #33FF00;">{{ note.content }}</h2>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

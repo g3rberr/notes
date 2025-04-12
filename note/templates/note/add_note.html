@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+            <form method="POST" action="{% url 'notes:add_note' %}">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    {% csrf_token %}
+
+                    <h3>{{ form.title.label }}</h3>
+                    <br>
+                    {{ form.title }}
+                    <br>
+                    {% if form.tags %}
+                    <h3>{{ form.tags.label }}</h3>
+                    <br>
+                    {{ form.tags }}</h3>
+                    {% endif %}
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                    <div class="inline-headers">
+                        <h3> Note: </h3>
+
+                        <h5>
+                        </h5>
+                    </div>
+                    <br>
+                    {{ form.content }}
+                    <br>
+                <button type="submit" class="form-control btn btn-primary" style="background-color: #000; border: 1px solid #33FF00; color: #33FF00;">
+                    Save note
+                </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <style>
+        
+        
+    </style>
+    <script>
+        
+    </script>
+{% endblock %}

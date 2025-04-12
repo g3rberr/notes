@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block content %}
+    <div class="container" style="padding-top: 2%; color: #33FF00;">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                {% if delete %}
+                    <div class="alert alert-danger" style="background-color: #111; border: 1px solid #33FF00; color: #33FF00;">
+                        <button type="button" class="close" data-dismiss="alert" style="color: #33FF00;">&times;</button>
+                        Note deleted successfully
+                    </div>
+                {% endif %}
+
+                <h1 style="color: #33FF00;">Welcome, {{ user.username }}</h1>
+
+                {% if notes %}
+                <input type="text" id="notes" class="form-control dark-input no_borders"
+                autocomplete="off" name="notes" placeholder="Search Note">
+
+                <div style="padding-top: 20px">
+                    <div id="result">{% include 'users/partials/search_result.html' %}</div>
+                </div>
+                    <br>
+                {% else %}
+                    <div class="alert alert-danger" style="background-color: #111; border: 1px solid #33FF00; color: #33FF00;">
+                        You have no notes added! Let's add one <a href="/notes/add/" style="color: #33FF00; text-decoration: underline;">here</a>
+                    </div>
+                {% endif %}
+        </div>
+    </div>
+    <style>
+
+        
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#notes").keyup(function () {
+                let query = $(this).val(); 
+    
+                if (query.length > 0) {
+                    $.ajax({
+                        url: "{% url 'users:profile_search_notes' %}",
+                        data: {
+                            'q': query
+                        },
+                        dataType: 'json',
+                        success: function (data) {
+                            $("#result").html(data['html']);
+                        }
+                    });
+                } else {
+                    $.ajax({
+                        url: "{% url 'users:profile_search_notes' %}",
+                        data: {
+                            'q': '' 
+                        },
+                        dataType: 'json',
+                        success: function (data) {
+                            $("#result").html(data['html']);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+    
+{% endblock %}
