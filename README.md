@@ -26,7 +26,7 @@ Built with a clean MVC structure, it supports user authentication, note tagging,
   - Add and manage tags per note  
 - **Live Search**:  
   - AJAX‑powered instant search by note title  
-  - Keyword filtering via tags  
+  - Keyword filtering via title  
 - **Responsive UI**:  
   - Mobile‑first design  
 - **Ready for Enhancement**:  
